@@ -6,37 +6,33 @@
         <div class="searchBox">
           <input type="text" v-model="search" placeholder="請輸入關鍵字" />
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2" style="position: relative">
           <h1>商品列表</h1>
           <div class="list">
             <div
               class="choose"
-              :class="{ active: active }"
-              active-class="activeClass"
+              :class="{ bgc: style === '所有商品' }"
               @click="chooseClass($event)"
             >
               所有商品
             </div>
             <div
               class="choose"
-              :class="{ active: active }"
-              active-class="activeClass"
+              :class="{ bgc: style === '鈴芽之旅' }"
               @click="chooseClass($event)"
             >
               鈴芽之旅
             </div>
             <div
               class="choose"
-              :class="{ active: active }"
-              active-class="activeClass"
+              :class="{ bgc: style === '天氣之子' }"
               @click="chooseClass($event)"
             >
               天氣之子
             </div>
             <div
               class="choose"
-              :class="{ active: active }"
-              active-class="activeClass"
+              :class="{ bgc: style === '你的名字' }"
               @click="chooseClass($event)"
             >
               你的名字
@@ -52,7 +48,7 @@
           >
             <img :src="p.imageUrl" class="img-fluid" />
             <div class="">
-              <h3 class="card-title">{{ p.title }}</h3>
+              <h4 class="card-title">{{ p.title }}</h4>
               <div class="bottom">
                 <p class="card-origin">原價:{{ p.origin_price }}</p>
                 <p class="card-price">優惠價:{{ p.price }}</p>
@@ -73,6 +69,7 @@ export default {
       search: "",
       isLoading: false,
       category: "所有商品",
+      style: "所有商品",
     };
   },
   methods: {
@@ -81,7 +78,6 @@ export default {
       this.isLoading = true;
       this.$http.get(api).then((response) => {
         this.isLoading = false;
-        console.log(response.data);
         this.product = response.data.products;
       });
     },
@@ -92,6 +88,7 @@ export default {
     chooseClass(e) {
       console.log(e.target.innerText);
       this.category = e.target.innerText;
+      this.style = e.target.innerText;
     },
   },
   computed: {
@@ -167,12 +164,15 @@ input {
 .choose {
   border-radius: 2px;
   text-align: center;
-  background: transparent;
   font-size: 30px;
   color: white;
   font-weight: 600;
   line-height: 50px;
   cursor: pointer;
+}
+.choose.bgc {
+  background-color: white;
+  color: black;
 }
 .choose:hover {
   background-color: white;
@@ -220,8 +220,7 @@ input {
   object-position: center center;
 }
 .card-title {
-  line-height: 50px;
-  text-align: center;
+  text-align: left;
 }
 .card-origin {
   text-decoration: line-through;

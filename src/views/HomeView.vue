@@ -96,7 +96,7 @@
       <h2 style="text-align: center">本網站內容資料來源:</h2>
       <div class="row source">
         <div class="source-1 col-6 d-flex">
-          <h2>圖文資料</h2>
+          <h2 style="font-weight: 600">圖文資料</h2>
           <a href="https://wall.alphacoders.com/">Wall Paperabyss</a>
           <a href="https://zh.wikipedia.org/zh-tw/%E6%96%B0%E6%B5%B7%E8%AA%A0">
             維基百科 新海誠
@@ -104,7 +104,7 @@
           <a href="https://www.myacg.com.tw/index.php?">買動漫</a>
         </div>
         <div class="source-2 col-6 d-flex">
-          <h2>作品相關網站</h2>
+          <h2 style="font-weight: 600">作品相關網站</h2>
           <a href="https://suzume-tojimari-movie.jp/">鈴芽之旅 官網</a>
           <a href="https://tenkinoko.com/">天氣之子 官網</a>
           <a href="http://www.kiminona.com/">你的名字 官網</a>
@@ -201,6 +201,7 @@ export default {
 }
 .source a {
   font-size: 18px;
+  opacity: 0.8;
 }
 .source-1 {
   flex-direction: column;

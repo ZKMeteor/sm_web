@@ -3,19 +3,41 @@
     <LoadingIcon :active="isLoading"> </LoadingIcon>
     <div class="container">
       <div class="row bg">
-        <div class="col-md-6 col-12">
+        <div class="main col-md-6 col-12">
           <img :src="product.imageUrl" class="mainPic" />
         </div>
         <div class="content col-md-6 col-12">
-          <h1>
-            {{ product.title }}
-          </h1>
-          <hr style="color: white" />
-          <h3>{{ product.description }}</h3>
-          <div class="origin">
-            <h3>原價:{{ product.origin_price }}元</h3>
+          <div class="top">
+            <h1>
+              {{ product.title }}
+            </h1>
+            <hr style="color: white" />
+            <h3>{{ product.description }}</h3>
           </div>
-          <div class="price">優惠價:{{ product.price }}元</div>
+          <div class="cart">
+            <h3 style="display: inline">請輸入數量:</h3>
+            <input type="number" v-model="qty" min="1" />
+            <button
+              class="btnCart mb-2"
+              :disabled="this.status.loadingItem === this.product.id"
+              @click="addCart()"
+            >
+              <div
+                v-if="this.status.loadingItem === this.product.id"
+                class="spinner-border spinner-border-sm"
+                role="status"
+              >
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              加入購物車
+            </button>
+          </div>
+          <div class="bottom">
+            <h3 style="text-decoration: line-through; display: inline">
+              原價: {{ product.origin_price }}元
+            </h3>
+            <h4 class="price">優惠價:{{ product.price }}元</h4>
+          </div>
         </div>
       </div>
     </div>
@@ -30,6 +52,10 @@ export default {
       item: "",
       product: "",
       isLoading: false,
+      qty: 1,
+      status: {
+        loadingItem: "", //對應品項id
+      },
     };
   },
   methods: {
@@ -40,8 +66,19 @@ export default {
         if (response.data.success) {
           this.isLoading = false;
           this.product = response.data.product;
-          console.log(this.product);
         }
+      });
+    },
+    addCart() {
+      let api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+      this.status.loadingItem = this.item;
+      let cart = {
+        product_id: this.item,
+        qty: this.qty,
+      };
+      this.$http.post(api, { data: cart }).then((response) => {
+        this.status.loadingItem = "";
+        console.log(response);
       });
     },
   },
@@ -79,40 +116,74 @@ export default {
 }
 .bg {
   position: relative;
-  padding-top: 150px;
+  padding-top: 100px;
   z-index: 1;
 }
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .mainPic {
-  object-fit: cover;
-  height: 70vh;
-  padding: 50px;
-  max-width: 600px;
+  object-fit: fill;
+  align-items: center;
+  width: 450px;
 }
 .content {
   position: relative;
+  display: flex;
+  flex-direction: column;
   padding: 50px 20px;
   color: white;
 }
-.origin {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  text-decoration: line-through;
-  display: inline;
+.top {
+  flex: 2;
+}
+.cart {
+  flex: 0;
+}
+input {
+  height: 40px;
+  width: 80px;
+  font-size: 25px;
+  background: white;
+  border: none;
+  border-radius: 5px;
+  border-bottom: white 1px solid;
+  outline: none;
+  color: black;
+  font-weight: 500;
+  text-align: center;
+}
+.btnCart {
+  border: 2px white solid;
+  background: transparent;
+  border-radius: 5px;
+  color: white;
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
+  backdrop-filter: blur(5px);
+  float: right;
+}
+.btnCart:hover {
+  background-color: white;
+  color: black;
+}
+.bottom {
+  flex: 0;
 }
 .price {
-  position: absolute;
-  display: inline;
-  right: 0;
-  bottom: 0;
   color: red;
-  font-size: 35px;
+  font-size: 30px;
   font-weight: 400;
+  display: inline;
+  float: right;
 }
 @media screen and (max-width: 767px) {
   .mainPic {
     object-fit: cover;
-    height: 70vh;
+    height: 50vh;
     padding: 25px;
     max-width: 600px;
   }

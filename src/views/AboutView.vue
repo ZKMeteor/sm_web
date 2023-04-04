@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid about">
     <div class="container">
-      <div class="row bg">
+      <div class="bg">
         <h1>作品介紹</h1>
         <div class="row d-flex">
           <div class="content col-md-7 col-12">
@@ -68,6 +68,10 @@ export default {
 </script>
 
 <style scoped>
+* {
+  padding: 0;
+  margin: 0;
+}
 .about {
   background-image: url(../assets/projectBg.jpg);
   background-size: cover;
@@ -95,6 +99,7 @@ export default {
 .bg {
   position: relative;
   padding-top: 100px;
+  margin: 0;
   z-index: 1;
 }
 .content {
@@ -106,7 +111,7 @@ export default {
 }
 @media screen and (max-width: 767px) {
   .content {
-    padding: 40px 5px;
+    padding: 40px 0px;
   }
 }
 </style>
