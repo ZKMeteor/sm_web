@@ -70,38 +70,44 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+    <div class="mainTitle">
+      <h1>新海誠の個人風格網站</h1>
+      <br />
+      <h3>新海誠個人簡介、近年創作作品以及作品周邊販賣</h3>
+    </div>
     <div class="container-md about">
       <div class="row">
         <h1 style="line-height: 50px">關於 作家 新海誠</h1>
         <div class="content col-md-7 col-12">
           <h2>個人簡介</h2>
-          <p>
-            新海誠在中學時觀賞天空之城的影響，希望自己也能做出令人驚豔的作品，作品題材多半涉及男女之間的愛情，都以兩位主角之間的距離、遠近、遠離的速度為主題，言葉之庭的主題則是孤單渴望某個人、某項事物的心。
+          <p style="display: inline">
+            新海誠在中學時觀賞天空之城的影響，希望自己也能做出令人驚豔的作品，作品題材多半涉及男女之間的愛情，主題都以兩位主角之間的距離、遠近、遠離的速度為主題，言葉之庭的主題則是孤單渴望某個人、某項事物的心。
             你的名字、天氣之子、鈴芽之旅則是災難主題，而且都和東日本大地震有關。
-            <button @click="goProduct" class="goBtn">前往作品</button>
           </p>
           <hr style="color: white" />
-          <h2>資料來源:</h2>
-          <a
-            style="color: white; font-size: 20px; line-height: 50px"
-            href="https://wall.alphacoders.com/"
-            >Wall Paperabyss</a
-          >
-          <br />
-          <a
-            style="color: white; font-size: 20px; line-height: 50px"
-            href="https://zh.wikipedia.org/zh-tw/%E6%96%B0%E6%B5%B7%E8%AA%A0"
-            >維基百科</a
-          >
-          <br />
-          <a
-            style="color: white; font-size: 20px; line-height: 50px"
-            href="https://www.myacg.com.tw/index.php?"
-            >買動漫</a
-          >
+          <button @click="goProduct" class="goBtn">前往作品</button>
         </div>
         <div class="col-md-5 col-12">
           <img src="../assets/hero.jpg" class="hero" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid sourceBox">
+      <h2 style="text-align: center">本網站內容資料來源:</h2>
+      <div class="row source">
+        <div class="source-1 col-6 d-flex">
+          <h2>圖文資料</h2>
+          <a href="https://wall.alphacoders.com/">Wall Paperabyss</a>
+          <a href="https://zh.wikipedia.org/zh-tw/%E6%96%B0%E6%B5%B7%E8%AA%A0">
+            維基百科 新海誠
+          </a>
+          <a href="https://www.myacg.com.tw/index.php?">買動漫</a>
+        </div>
+        <div class="source-2 col-6 d-flex">
+          <h2>作品相關網站</h2>
+          <a href="https://suzume-tojimari-movie.jp/">鈴芽之旅 官網</a>
+          <a href="https://tenkinoko.com/">天氣之子 官網</a>
+          <a href="http://www.kiminona.com/">你的名字 官網</a>
         </div>
       </div>
     </div>
@@ -126,32 +132,21 @@ export default {
 </script>
 
 <style scoped>
-a {
-  text-decoration: none;
+.carousel {
+  position: relative;
 }
-a:hover {
-  text-decoration: underline;
-}
-h1 {
-  color: white;
-  text-align: center;
-  line-height: 60px;
-  font-size: 40px;
-  font-weight: 500;
-}
-h2 {
-  color: white;
-  font-size: 30px;
-}
-h5 {
-  font-size: 35px;
-  font-weight: 600;
-}
-p {
-  color: white;
-  font-size: 20px;
-  line-height: 50px;
-  word-wrap: break-word;
+.mainTitle {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  z-index: 2;
+  border: white 2px solid;
+  background-color: transparent;
+  backdrop-filter: blur(15px);
+  border-radius: 5px;
+  width: 500px;
+  height: 200px;
+  padding: 20px;
 }
 .carousel img {
   height: 100vh;
@@ -171,6 +166,16 @@ p {
 .content {
   padding: 100px 50px;
 }
+.source {
+  height: 150px;
+}
+.source a {
+  display: inline;
+  color: white;
+  font-size: 20px;
+  line-height: 35px;
+  opacity: 0.9;
+}
 .hero {
   width: 100%;
 }
@@ -181,16 +186,50 @@ p {
   font-weight: 600;
   border-radius: 5px;
   border: white solid 1px;
-  line-height: 50px;
+  line-height: 40px;
+  width: 150px;
   padding: 5px;
+  float: right;
 }
 .goBtn:hover {
   background-color: white;
   color: black;
 }
+.sourceBox {
+  padding: 50px;
+  background-color: gray;
+}
+.source a {
+  font-size: 18px;
+}
+.source-1 {
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.source-2 {
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
 @media screen and (max-width: 767px) {
   .content {
     padding: 50px 20px;
+  }
+  .mainTitle {
+    position: absolute;
+    top: 15%;
+    z-index: 100;
+    border: white 2px solid;
+    background-color: transparent;
+    backdrop-filter: blur(15px);
+    border-radius: 5px;
+    width: 300px;
+    height: 250px;
+    padding: 15px;
+    word-wrap: break-word;
   }
 }
 </style>

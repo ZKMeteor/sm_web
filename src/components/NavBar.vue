@@ -15,12 +15,12 @@
         </div>
         <div class="tag">
           <router-link :to="{ name: 'about' }" active-class="active">
-            Anime
+            Porject
           </router-link>
         </div>
         <div class="tag">
-          <router-link :to="{ name: '' }" active-class="active"
-            >login
+          <router-link :to="{ name: 'product' }" active-class="active"
+            >Product
           </router-link>
         </div>
       </div>
@@ -68,7 +68,6 @@ export default {};
   text-align: center;
   color: black;
 }
-
 .top-3 a {
   color: white;
   font-size: 25px;
@@ -82,7 +81,7 @@ export default {};
 }
 .top-3 a:hover {
   border-radius: 5px;
-  color: purple;
+  color: aqua;
   transform: translateY(-3px);
 }
 .top-3 a::after {
@@ -91,25 +90,17 @@ export default {};
   left: 0%;
   right: 100%;
   bottom: 1px;
-  border-bottom: 2px solid purple;
+  border-bottom: 2px solid aqua;
   transition: 0.4s;
 }
 .top-3 a:hover::after {
   left: 0;
   right: 0;
 }
-
-h1 {
-  font-size: 40px;
-  user-select: none;
-}
-h2 {
-  font-size: 15px;
-}
 .active {
   text-decoration: underline;
-  font-weight: 600;
-  color: black;
+  font-weight: 500;
+  color: aqua;
 }
 
 @media screen and (max-width: 768px) {

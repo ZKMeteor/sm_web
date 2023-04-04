@@ -16,11 +16,42 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
+  {
+    path: "/product",
+    name: "product",
+    component: () => import("../views/ProductView.vue"),
+    children: [
+      {
+        path: "product/cart",
+        component: () => import("../views/cartView.vue"),
+      },
+    ],
+  },
+  {
+    path: "/product/:id",
+    component: () => import("../views/productIdView.vue"),
+    props: (route) => {
+      return {
+        id: route.params.id,
+      };
+    },
+  },
 ];
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+  scrollBehavior(to) {
+    if (to.fullPath.match("about")) {
+      return {
+        top: 0,
+      };
+    } else {
+      return {
+        top: 0,
+      };
+    }
+  },
 });
 
 export default router;
