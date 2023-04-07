@@ -19,8 +19,13 @@
           </router-link>
         </div>
         <div class="tag">
-          <router-link :to="{ name: 'product' }" active-class="active"
-            >Product
+          <router-link :to="{ name: 'product' }" active-class="active">
+            Product
+          </router-link>
+        </div>
+        <div class="tag">
+          <router-link :to="{ name: 'cart' }" active-class="active">
+            <ion-icon name="cart" style="font-size: 40px"></ion-icon>
           </router-link>
         </div>
       </div>
@@ -83,6 +88,7 @@ export default {};
   border-radius: 5px;
   color: aqua;
   transform: translateY(-3px);
+  transition: 0.5s;
 }
 .top-3 a::after {
   content: "";

@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid home">
+  <div class="container-fluid home animate__animated animate__fadeIn">
     <div
       id="carouselExampleCaptions"
       class="carousel slide carousel-fade"
@@ -194,6 +194,7 @@ export default {
 .goBtn:hover {
   background-color: white;
   color: black;
+  transition: 0.5s;
 }
 .sourceBox {
   padding: 50px;
@@ -228,7 +229,7 @@ export default {
     backdrop-filter: blur(15px);
     border-radius: 5px;
     width: 300px;
-    height: 250px;
+    height: 200px;
     padding: 15px;
     word-wrap: break-word;
   }

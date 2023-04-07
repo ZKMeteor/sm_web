@@ -20,12 +20,11 @@ const routes = [
     path: "/product",
     name: "product",
     component: () => import("../views/ProductView.vue"),
-    children: [
-      {
-        path: "product/cart",
-        component: () => import("../views/cartView.vue"),
-      },
-    ],
+  },
+  {
+    path: "/cart",
+    name: "cart",
+    component: () => import("../views/cartView.vue"),
   },
   {
     path: "/product/:id",
@@ -33,6 +32,15 @@ const routes = [
     props: (route) => {
       return {
         id: route.params.id,
+      };
+    },
+  },
+  {
+    path: "/checkOrder/:orderId",
+    component: () => import("../views/checkOrder.vue"),
+    props: (route) => {
+      return {
+        id: route.params.orderId,
       };
     },
   },

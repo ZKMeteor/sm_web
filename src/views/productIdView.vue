@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid ID">
+  <div class="container-fluid ID animate__animated animate__fadeIn">
     <LoadingIcon :active="isLoading"> </LoadingIcon>
     <div class="container">
       <div class="row bg">
@@ -17,6 +17,7 @@
           <div class="cart">
             <h3 style="display: inline">請輸入數量:</h3>
             <input type="number" v-model="qty" min="1" />
+            <h3 style="display: inline">{{ product.unit }}</h3>
             <button
               class="btnCart mb-2"
               :disabled="this.status.loadingItem === this.product.id"
@@ -144,7 +145,7 @@ export default {
 }
 input {
   height: 40px;
-  width: 80px;
+  width: 40px;
   font-size: 25px;
   background: white;
   border: none;

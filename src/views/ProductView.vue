@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid product">
+  <div class="container-fluid product animate__animated animate__fadeIn">
     <LoadingIcon :active="isLoading"> </LoadingIcon>
     <div class="container">
       <div class="row bg">
@@ -50,7 +50,9 @@
             <div class="">
               <h4 class="card-title">{{ p.title }}</h4>
               <div class="bottom">
-                <p class="card-origin">原價:{{ p.origin_price }}</p>
+                <p class="card-origin" style="font-size: 15px">
+                  原價:{{ p.origin_price }}
+                </p>
                 <p class="card-price">優惠價:{{ p.price }}</p>
               </div>
             </div>
@@ -201,10 +203,12 @@ input {
   color: white;
   cursor: pointer;
   display: flex;
+  padding: 5px;
 }
 .card:hover {
-  background-color: gray;
-  transition: 1s;
+  box-shadow: 2px 2px 2px white, -2px -2px 2px white, -2px 2px 2px white,
+    2px -2px 2px white;
+  transition: 0.5s;
 }
 .card img {
   box-sizing: border-box;
@@ -215,12 +219,12 @@ input {
   object-position: 0;
   padding: 2px;
 }
-.card img:hover {
+.card:hover img {
   object-fit: cover;
   object-position: center center;
 }
 .card-title {
-  text-align: left;
+  text-align: center;
 }
 .card-origin {
   text-decoration: line-through;
@@ -229,6 +233,7 @@ input {
   display: inline;
   letter-spacing: 0px;
   font-weight: 600;
+  text-align: center;
 }
 .bottom {
   position: absolute;

@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid about">
+  <div class="container-fluid about animate__animated animate__fadeIn">
     <div class="container">
       <div class="bg">
         <h1>作品介紹</h1>
