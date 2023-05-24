@@ -7,6 +7,7 @@
           <img :src="product.imageUrl" class="mainPic" />
         </div>
         <div class="content col-md-6 col-12">
+          <ToastMessages></ToastMessages>
           <div class="top">
             <h1>
               {{ product.title }}
@@ -46,6 +47,7 @@
 </template>
 
 <script>
+import ToastMessages from "@/components/ToastMessages.vue";
 export default {
   props: ["id"],
   data() {
@@ -59,6 +61,10 @@ export default {
       },
     };
   },
+  components: {
+    ToastMessages,
+  },
+  inject: ["emitter"],
   methods: {
     getProduct() {
       this.isLoading = true;
@@ -79,7 +85,7 @@ export default {
       };
       this.$http.post(api, { data: cart }).then((response) => {
         this.status.loadingItem = "";
-        console.log(response);
+        this.$httpMessage(response, "加入購物車");
       });
     },
   },

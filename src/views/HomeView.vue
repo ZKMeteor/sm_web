@@ -78,7 +78,7 @@
     <div class="container-md about">
       <div class="row">
         <h1 style="line-height: 50px">關於 作家 新海誠</h1>
-        <div class="content col-md-7 col-12">
+        <div class="homecontent col-md-7 col-12 animate__animated">
           <h2>個人簡介</h2>
           <p style="display: inline">
             新海誠在中學時觀賞天空之城的影響，希望自己也能做出令人驚豔的作品，作品題材多半涉及男女之間的愛情，主題都以兩位主角之間的距離、遠近、遠離的速度為主題，言葉之庭的主題則是孤單渴望某個人、某項事物的心。
@@ -87,7 +87,7 @@
           <hr style="color: white" />
           <button @click="goProduct" class="goBtn">前往作品</button>
         </div>
-        <div class="col-md-5 col-12">
+        <div class="pic col-md-5 col-12 animate__animated">
           <img src="../assets/hero.jpg" class="hero" alt="" />
         </div>
       </div>
@@ -127,6 +127,31 @@ export default {
     goProduct() {
       this.$router.push("/about");
     },
+    anime() {
+      addEventListener("scroll", function () {
+        // 取得目標元素的位置
+        let targetElement = document.querySelector(".homecontent");
+        if (targetElement !== null) {
+          let targetPosition = targetElement.getBoundingClientRect().top;
+          // 取得當前捲軸的位置
+          let scrollPosition = /* window.innerHeight-600 + */ window.scrollY;
+          // 當捲軸滾動到目標元素的位置時，執行特效的程式碼
+          if (scrollPosition > targetPosition) {
+            // 在這裡加入特效的程式碼
+            /*       targetElement.classList.remove('animate__rotateOutUpLeft'); */
+            targetElement.classList.add("animate__fadeInDown");
+            targetElement.style.opacity = "1";
+          } else {
+            targetElement.classList.remove("animate__fadeInDown");
+            /*         targetElement.classList.add('animate__rotateOutUpLeft'); */
+            targetElement.style.opacity = "0";
+          }
+        }
+      });
+    },
+  },
+  mounted() {
+    this.anime();
   },
 };
 </script>
@@ -163,7 +188,7 @@ export default {
   padding: 30px;
 }
 
-.content {
+.homecontent {
   padding: 100px 50px;
 }
 .source {

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="bg">
         <h1>作品介紹</h1>
-        <div class="row d-flex">
+        <div class="row d-flex aboutbox1 animate__animated">
           <div class="content col-md-7 col-12">
             <h2 style="text-align: center">鈴芽之旅</h2>
             <p style="padding: 10px 50px">
@@ -20,7 +20,7 @@
             <img src="../assets/title1.jpg" class="title1" />
           </div>
         </div>
-        <div class="row d-flex flex-row-reverse">
+        <div class="row d-flex flex-row-reverse aboutbox2 animate__animated">
           <div class="content col-md-7 col-12">
             <h2 style="text-align: center">天氣之子</h2>
             <p style="padding: 10px 50px">
@@ -36,7 +36,7 @@
             <img src="../assets/title2.jpg" class="title1" />
           </div>
         </div>
-        <div class="row d-flex">
+        <div class="row d-flex aboutbox3 animate__animated">
           <div class="content col-md-7 col-12">
             <h2 style="text-align: center">你的名字</h2>
             <p style="padding: 10px 50px">
@@ -63,6 +63,56 @@ export default {
     return {
       item: "",
     };
+  },
+  methods: {
+    aboutbox2() {
+      addEventListener("scroll", function () {
+        // 取得目標元素的位置
+        let targetElement = document.querySelector(".aboutbox2");
+        if (targetElement !== null) {
+          let targetPosition = targetElement.getBoundingClientRect().top;
+          // 取得當前捲軸的位置
+          let scrollPosition = /* window.innerHeight-600 + */ window.scrollY;
+          // 當捲軸滾動到目標元素的位置時，執行特效的程式碼
+          if (scrollPosition > targetPosition) {
+            // 在這裡加入特效的程式碼
+            /*       targetElement.classList.remove('animate__rotateOutUpLeft'); */
+            targetElement.classList.add("animate__fadeInDown");
+            targetElement.style.opacity = "1";
+          } else {
+            targetElement.classList.remove("animate__fadeInDown");
+            /*         targetElement.classList.add('animate__rotateOutUpLeft'); */
+            targetElement.style.opacity = "0";
+          }
+        }
+      });
+    },
+    aboutbox3() {
+      addEventListener("scroll", function () {
+        // 取得目標元素的位置
+        let targetElement = document.querySelector(".aboutbox3");
+        if (targetElement !== null) {
+          let targetPosition = targetElement.getBoundingClientRect().top;
+          // 取得當前捲軸的位置
+          let scrollPosition = /* window.innerHeight-600 + */ window.scrollY;
+          // 當捲軸滾動到目標元素的位置時，執行特效的程式碼
+          if (scrollPosition > targetPosition) {
+            // 在這裡加入特效的程式碼
+            /*       targetElement.classList.remove('animate__rotateOutUpLeft'); */
+            targetElement.classList.add("animate__fadeInDown");
+            targetElement.style.opacity = "1";
+          } else {
+            targetElement.classList.remove("animate__fadeInDown");
+            /*         targetElement.classList.add('animate__rotateOutUpLeft'); */
+            targetElement.style.opacity = "0";
+          }
+        }
+      });
+    },
+  },
+  mounted() {
+    this.aboutbox2();
+    this.aboutbox3();
   },
 };
 </script>

@@ -6,47 +6,54 @@
         <div class="searchBox">
           <input type="text" v-model="search" placeholder="請輸入關鍵字" />
         </div>
-        <div class="col-md-2" style="position: relative">
-          <h1>商品列表</h1>
-          <div class="list">
-            <div
-              class="choose"
-              :class="{ bgc: style === '所有商品' }"
-              @click="chooseClass($event)"
-            >
-              所有商品
-            </div>
-            <div
-              class="choose"
-              :class="{ bgc: style === '鈴芽之旅' }"
-              @click="chooseClass($event)"
-            >
-              鈴芽之旅
-            </div>
-            <div
-              class="choose"
-              :class="{ bgc: style === '天氣之子' }"
-              @click="chooseClass($event)"
-            >
-              天氣之子
-            </div>
-            <div
-              class="choose"
-              :class="{ bgc: style === '你的名字' }"
-              @click="chooseClass($event)"
-            >
-              你的名字
+        <div class="list col-md-2">
+          <div class="listbox">
+            <ToastMessages></ToastMessages>
+            <h1>商品列表</h1>
+            <div>
+              <div
+                class="choose"
+                :class="{ bgc: style === '所有商品' }"
+                @click="chooseClass($event)"
+              >
+                所有商品
+              </div>
+              <div
+                class="choose"
+                :class="{ bgc: style === '鈴芽之旅' }"
+                @click="chooseClass($event)"
+              >
+                鈴芽之旅
+              </div>
+              <div
+                class="choose"
+                :class="{ bgc: style === '天氣之子' }"
+                @click="chooseClass($event)"
+              >
+                天氣之子
+              </div>
+              <div
+                class="choose"
+                :class="{ bgc: style === '你的名字' }"
+                @click="chooseClass($event)"
+              >
+                你的名字
+              </div>
             </div>
           </div>
         </div>
         <div class="item col-md-9">
-          <div
-            v-for="p in searchProduct"
-            :key="p.id"
-            class="card"
-            @click="chooseItem(p.id)"
-          >
-            <img :src="p.imageUrl" class="img-fluid" />
+          <div v-for="p in searchProduct" :key="p.id" class="card">
+            <img
+              :src="p.imageUrl"
+              class="img-fluid"
+              @click="chooseItem(p.id)"
+            />
+            <ion-icon
+              name="cart-outline"
+              class="icons"
+              @click="addCart(p.id)"
+            ></ion-icon>
             <div class="">
               <h4 class="card-title">{{ p.title }}</h4>
               <div class="bottom">
@@ -64,6 +71,7 @@
 </template>
 
 <script>
+import ToastMessages from "@/components/ToastMessages.vue";
 export default {
   data() {
     return {
@@ -72,8 +80,13 @@ export default {
       isLoading: false,
       category: "所有商品",
       style: "所有商品",
+      status: "",
     };
   },
+  components: {
+    ToastMessages,
+  },
+  inject: ["emitter"],
   methods: {
     getProduct() {
       let api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
@@ -84,13 +97,26 @@ export default {
       });
     },
     chooseItem(p) {
-      console.log(p);
       this.$router.push(`/product/${p}`);
     },
     chooseClass(e) {
-      console.log(e.target.innerText);
       this.category = e.target.innerText;
       this.style = e.target.innerText;
+    },
+    addCart(p) {
+      let api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+      this.status = p;
+      let cart = {
+        product_id: p,
+        qty: 1,
+      };
+      this.isLoading = true;
+      this.$http.post(api, { data: cart }).then((response) => {
+        this.status = "";
+        this.isLoading = false;
+        console.log(response);
+        this.$httpMessage(response, "加入購物車");
+      });
     },
   },
   computed: {
@@ -158,10 +184,9 @@ input {
   padding-top: 100px;
   z-index: 1;
 }
-.list {
+.listbox {
+  position: fixed;
   background: transparent;
-  display: flex;
-  flex-direction: column;
 }
 .choose {
   border-radius: 2px;
@@ -192,7 +217,7 @@ input {
 .card {
   position: relative;
   border-radius: 5px;
-  min-height: 400px;
+  min-height: 375px;
   width: 210px;
   margin: 15px;
   border: none;
@@ -201,7 +226,6 @@ input {
   background: transparent;
   backdrop-filter: blur(5px);
   color: white;
-  cursor: pointer;
   display: flex;
   padding: 5px;
 }
@@ -218,10 +242,26 @@ input {
   object-fit: fill;
   object-position: 0;
   padding: 2px;
+  cursor: pointer;
 }
 .card:hover img {
   object-fit: cover;
   object-position: center center;
+}
+.icons {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  border: 1px white solid;
+  border-radius: 25px;
+  font-size: 25px;
+  padding: 5px;
+  cursor: pointer;
+}
+.icons:hover {
+  background-color: white;
+  color: black;
 }
 .card-title {
   text-align: center;
@@ -253,11 +293,21 @@ input {
     font-size: 25px;
   }
   .list {
-    flex-wrap: wrap;
-    flex-direction: column;
+    display: none;
   }
   .card {
     width: 150px;
+    min-height: 400px;
+  }
+  .card img {
+    box-sizing: border-box;
+    width: 250px;
+    height: 250px;
+    border-radius: 5px;
+    object-fit: cover;
+    object-position: center center;
+    padding: 2px;
+    cursor: pointer;
   }
 }
 </style>

@@ -256,7 +256,6 @@ export default {
       let api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`;
       let order = this.form;
       this.$http.post(api, { data: order }).then((response) => {
-        console.log(response.data);
         this.$router.push(`/checkOrder/${response.data.orderId}`);
       });
       let modal = this.$refs.modal;

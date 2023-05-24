@@ -7,9 +7,15 @@
 
 <script>
 import NavBar from "./components/NavBar.vue";
+import emitter from "./methods/emitter";
 export default {
   components: {
     NavBar,
+  },
+  provide() {
+    return {
+      emitter,
+    };
   },
 };
 </script>

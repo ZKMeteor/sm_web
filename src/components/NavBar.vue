@@ -4,26 +4,21 @@
       <div class="top-1">
         <h1></h1>
       </div>
-      <div class="top-2">
-        <!--             <input type="text" placeholder="請輸入動漫名稱"> -->
-      </div>
       <div class="top-3">
+        <input type="checkbox" id="btn_control" style="display: none" />
+        <label for="btn_control" class="btn_control">
+          <span>選單</span>
+        </label>
         <div class="tag">
           <router-link :to="{ name: 'home' }" active-class="active">
             Home
           </router-link>
-        </div>
-        <div class="tag">
           <router-link :to="{ name: 'about' }" active-class="active">
             Porject
           </router-link>
-        </div>
-        <div class="tag">
           <router-link :to="{ name: 'product' }" active-class="active">
             Product
           </router-link>
-        </div>
-        <div class="tag">
           <router-link :to="{ name: 'cart' }" active-class="active">
             <ion-icon name="cart" style="font-size: 40px"></ion-icon>
           </router-link>
@@ -61,18 +56,6 @@ export default {};
   flex: 2;
   text-align: center;
 }
-
-.top-2 {
-  flex: 1;
-}
-.top-2 input {
-  width: 100%;
-  height: 40px;
-  border: none;
-  outline: none;
-  text-align: center;
-  color: black;
-}
 .top-3 a {
   color: white;
   font-size: 25px;
@@ -82,7 +65,8 @@ export default {};
 .top-3 {
   display: flex;
   flex: 2;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
 }
 .top-3 a:hover {
   border-radius: 5px;
@@ -110,5 +94,21 @@ export default {};
 }
 
 @media screen and (max-width: 768px) {
+  .btn_control span {
+    opacity: 5;
+    background-color: rgba(140, 247, 255, 0.884);
+  }
+  .btn_control {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 2px;
+    background: purple;
+    height: 2px;
+    width: 30px;
+    margin: auto;
+    box-shadow: 0px 8px 0px purple, 0px -8px 0px purple;
+  }
 }
 </style>

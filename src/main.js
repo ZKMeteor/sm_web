@@ -14,7 +14,7 @@ import { Form, Field, ErrorMessage, defineRule, configure } from "vee-validate";
 import AllRules from "@vee-validate/rules";
 import { localize, setLocale } from "@vee-validate/i18n";
 import zhTW from "@vee-validate/i18n/dist/locale/zh_TW.json";
-
+import $httpMessage from "@/methods/pushMessage";
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule]);
 });
@@ -29,6 +29,7 @@ const app = createApp(App);
 app.config.globalProperties.$filters = {
   currency,
 };
+app.config.globalProperties.$httpMessage = $httpMessage;
 app.component("ForM", Form);
 app.component("FielD", Field);
 app.component("ErrorMessage", ErrorMessage);
