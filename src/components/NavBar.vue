@@ -104,11 +104,11 @@ export default {};
     top: 0;
     bottom: 0;
     left: 2px;
-    background: purple;
+    background: white;
     height: 2px;
     width: 30px;
     margin: auto;
-    box-shadow: 0px 8px 0px purple, 0px -8px 0px purple;
+    box-shadow: 0px 8px 0px white, 0px -8px 0px white;
   }
 }
 </style>
