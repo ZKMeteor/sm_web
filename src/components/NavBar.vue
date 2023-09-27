@@ -7,7 +7,7 @@
       <div class="top-3">
         <input type="checkbox" id="btn_control" style="display: none" />
         <label for="btn_control" class="btn_control">
-          <span>選單</span>
+          <span></span>
         </label>
         <div class="tag">
           <router-link :to="{ name: 'home' }" active-class="active">
@@ -29,7 +29,30 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    check() {
+      document.addEventListener("click", function (event) {
+        const mailbtn = document.querySelector(".btn_control");
+        const btn_control = document.getElementById("btn_control");
+        const tag = document.querySelector(".tag");
+        if (event.target == mailbtn) {
+          btn_control.checked = !btn_control.checked;
+        }
+        if (
+          btn_control.checked &&
+          event.target !== tag &&
+          event.target !== mailbtn
+        ) {
+          btn_control.checked = false;
+        }
+      });
+    },
+    mounted() {
+      this.check;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -80,12 +103,16 @@ export default {};
   left: 0%;
   right: 100%;
   bottom: 1px;
-  border-bottom: 2px solid aqua;
   transition: 0.4s;
 }
 .top-3 a:hover::after {
   left: 0;
   right: 0;
+}
+.tag {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
 }
 .active {
   text-decoration: underline;
@@ -103,12 +130,31 @@ export default {};
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 2px;
+    right: 5%;
     background: white;
     height: 2px;
     width: 30px;
     margin: auto;
     box-shadow: 0px 8px 0px white, 0px -8px 0px white;
+    z-index: 999;
+  }
+  .tag {
+    background-color: rgba(140, 247, 255, 0.884);
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100dvh;
+    flex: 1;
+    display: flex;
+    flex-direction: column; /*由左至右*/
+    align-items: center; /*水平*/
+    justify-content: center;
+    font-size: 25px;
+    transition: 0.5s;
+  }
+  #btn_control:checked ~ .tag {
+    right: 0px;
   }
 }
 </style>

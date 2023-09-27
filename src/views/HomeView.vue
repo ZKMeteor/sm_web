@@ -247,7 +247,7 @@ export default {
   }
   .mainTitle {
     position: absolute;
-    top: 15%;
+    bottom: 15%;
     z-index: 100;
     border: white 2px solid;
     background-color: transparent;

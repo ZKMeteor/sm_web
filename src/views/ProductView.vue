@@ -6,7 +6,7 @@
         <div class="searchBox">
           <input type="text" v-model="search" placeholder="請輸入關鍵字" />
         </div>
-        <div class="list col-md-2">
+        <div class="list col-md-3 col-12">
           <div class="listbox">
             <ToastMessages></ToastMessages>
             <h1>商品列表</h1>
@@ -296,7 +296,7 @@ input {
     display: none;
   }
   .card {
-    width: 150px;
+    width: 200px;
     min-height: 400px;
   }
   .card img {
@@ -311,6 +311,6 @@ input {
   }
   .item {
     justify-content: center;
-}
+  }
 }
 </style>

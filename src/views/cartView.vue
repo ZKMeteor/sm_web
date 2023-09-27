@@ -2,14 +2,14 @@
   <div class="container-fluid cart animate__animated animate__fadeIn">
     <div class="container">
       <div class="bg">
-        <div class="row d-flex">
+        <div class="row d-flex" style="border-radius: 5px">
           <h1>購物清單</h1>
           <div class="content col-md-7 col-12">
             <table class="table">
               <LoadingIcon :active="isLoading"> </LoadingIcon>
               <thead>
                 <tr>
-                  <th width="50">編輯</th>
+                  <th width="100">編輯</th>
                   <th width="200">商品名稱</th>
                   <th width="100">售價</th>
                   <th width="160">數量</th>
@@ -68,7 +68,7 @@
               </tfoot>
             </table>
           </div>
-          <div class="col-md-5 col-12">
+          <div class="col-md-5 col-12" style="border-radius: 5px">
             <div
               id="carouselExampleControls"
               class="carousel slide title1"
@@ -304,7 +304,7 @@ export default {
   z-index: 1;
 }
 .row {
-  background-color: white;
+  background-color: rgb(255, 255, 255, 0.9);
 }
 .content {
   padding: 40px 50px;
