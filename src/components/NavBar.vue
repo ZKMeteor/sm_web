@@ -31,27 +31,28 @@
 <script>
 export default {
   methods: {
-    check() {
-      document.addEventListener("click", function (event) {
-        const mailbtn = document.querySelector(".btn_control");
-        const btn_control = document.getElementById("btn_control");
-        const tag = document.querySelector(".tag a");
-        if (event.target == mailbtn) {
-          btn_control.checked = !btn_control.checked;
-        }
-        if (
-          btn_control.checked &&
-          event.target !== tag &&
-          event.target !== mailbtn
-        ) {
-          btn_control.checked = false;
-        }
-        console.log("1");
-      });
+    closeCheckbox() {
+      const btn_control = document.getElementById("btn_control");
+      btn_control.checked = false;
     },
-    mounted() {
-      this.check();
-    },
+  },
+  mounted() {
+    this.$router.afterEach(() => {
+      this.closeCheckbox();
+    });
+
+    document.addEventListener("click", (event) => {
+      const btn_control = document.getElementById("btn_control");
+      const links = document.querySelectorAll(".tag a");
+
+      // 如果点击的不是链接，则关闭复选框
+      if (
+        !Array.from(links).some((link) => link.contains(event.target)) &&
+        !btn_control.contains(event.target)
+      ) {
+        this.closeCheckbox();
+      }
+    });
   },
 };
 </script>
@@ -155,8 +156,9 @@ export default {
     transition: 0.5s;
   }
   .tag a {
-    font-size: 32px;
-    line-height: 45px;
+    font-size: 40px;
+    line-height: 80px;
+    transition: 0.5s;
   }
   #btn_control:checked ~ .tag {
     right: 0px;

@@ -16,7 +16,7 @@
               2022年11月11日。風景將永遠銘刻在您的心中。
             </p>
           </div>
-          <div class="col-lg-5 col-12">
+          <div class="col-lg-5 col-12" style="display:flex;align-items:center">
             <img src="../assets/title1.jpg" class="title1" />
           </div>
         </div>
@@ -32,7 +32,7 @@
               2019年7月19日。
             </p>
           </div>
-          <div class="col-lg-5 col-12">
+          <div class="col-lg-5 col-12" style="display:flex;align-items:center">
             <img src="../assets/title2.jpg" class="title1" />
           </div>
         </div>
@@ -48,7 +48,7 @@
               2016年8月26日。
             </p>
           </div>
-          <div class="col-lg-5 col-12">
+          <div class="col-lg-5 col-12" style="display:flex;align-items:center">
             <img src="../assets/title3.jpg" class="title1" />
           </div>
         </div>

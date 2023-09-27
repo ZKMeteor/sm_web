@@ -11,10 +11,11 @@ import "vue3-loading-overlay/dist/vue3-loading-overlay.css";
 import { currency } from "./methods/filters";
 import "animate.css";
 import { Form, Field, ErrorMessage, defineRule, configure } from "vee-validate";
-import AllRules from "@vee-validate/rules";
+import * as AllRules from "@vee-validate/rules"; // 导入所有规则
 import { localize, setLocale } from "@vee-validate/i18n";
 import zhTW from "@vee-validate/i18n/dist/locale/zh_TW.json";
 import $httpMessage from "@/methods/pushMessage";
+
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule]);
 });
