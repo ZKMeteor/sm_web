@@ -14,7 +14,7 @@
             Home
           </router-link>
           <router-link :to="{ name: 'about' }" active-class="active">
-            Porject
+            Project
           </router-link>
           <router-link :to="{ name: 'product' }" active-class="active">
             Product
@@ -35,7 +35,7 @@ export default {
       document.addEventListener("click", function (event) {
         const mailbtn = document.querySelector(".btn_control");
         const btn_control = document.getElementById("btn_control");
-        const tag = document.querySelector(".tag");
+        const tag = document.querySelector(".tag a");
         if (event.target == mailbtn) {
           btn_control.checked = !btn_control.checked;
         }
@@ -46,10 +46,11 @@ export default {
         ) {
           btn_control.checked = false;
         }
+        console.log("1");
       });
     },
     mounted() {
-      this.check;
+      this.check();
     },
   },
 };
@@ -152,6 +153,10 @@ export default {
     justify-content: center;
     font-size: 25px;
     transition: 0.5s;
+  }
+  .tag a {
+    font-size: 32px;
+    line-height: 45px;
   }
   #btn_control:checked ~ .tag {
     right: 0px;

@@ -4,7 +4,7 @@
       <div class="bg">
         <h1>作品介紹</h1>
         <div class="row d-flex aboutbox1 animate__animated">
-          <div class="content col-md-7 col-12">
+          <div class="content col-lg-7 col-12">
             <h2 style="text-align: center">鈴芽之旅</h2>
             <p style="padding: 10px 50px">
               鈴芽之旅在描寫引發災難的“門”的與少女的解放與成長的現代冒險故事，故事背景設定在各地的廢墟中日本。
@@ -16,12 +16,12 @@
               2022年11月11日。風景將永遠銘刻在您的心中。
             </p>
           </div>
-          <div class="col-md-5 col-12">
+          <div class="col-lg-5 col-12">
             <img src="../assets/title1.jpg" class="title1" />
           </div>
         </div>
         <div class="row d-flex flex-row-reverse aboutbox2 animate__animated">
-          <div class="content col-md-7 col-12">
+          <div class="content col-lg-7 col-12">
             <h2 style="text-align: center">天氣之子</h2>
             <p style="padding: 10px 50px">
               天氣之子在講述了在氣候失衡的時代，一對男女被命運折騰，“選擇”了自己的生活方式的故事。
@@ -32,12 +32,12 @@
               2019年7月19日。
             </p>
           </div>
-          <div class="col-md-5 col-12">
+          <div class="col-lg-5 col-12">
             <img src="../assets/title2.jpg" class="title1" />
           </div>
         </div>
         <div class="row d-flex aboutbox3 animate__animated">
-          <div class="content col-md-7 col-12">
+          <div class="content col-lg-7 col-12">
             <h2 style="text-align: center">你的名字</h2>
             <p style="padding: 10px 50px">
               你的名字是一個男孩和一個女孩在夢中“交換”偶然發現彼此的意識會互換至對方身上後，
@@ -48,7 +48,7 @@
               2016年8月26日。
             </p>
           </div>
-          <div class="col-md-5 col-12">
+          <div class="col-lg-5 col-12">
             <img src="../assets/title3.jpg" class="title1" />
           </div>
         </div>
@@ -158,6 +158,7 @@ export default {
 .title1 {
   padding: 20px;
   width: 80%;
+  display: flex;
 }
 @media screen and (max-width: 767px) {
   .content {

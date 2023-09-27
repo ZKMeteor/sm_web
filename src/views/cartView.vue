@@ -68,7 +68,7 @@
               </tfoot>
             </table>
           </div>
-          <div class="col-md-5 col-12" style="border-radius: 5px">
+          <div class="col-md-5 col-12">
             <div
               id="carouselExampleControls"
               class="carousel slide title1"
@@ -109,7 +109,7 @@
             </div>
           </div>
         </div>
-        <div class="m-5 row justify-content-center">
+        <div class="m-5 row justify-content-center" style="border-radius: 5px">
           <ForM class="col-md-6" v-slot="{ errors }" @submit="createOrder">
             <div class="my-3">
               <label for="email" class="form-label">Email</label>
