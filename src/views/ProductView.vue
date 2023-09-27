@@ -309,5 +309,8 @@ input {
     padding: 2px;
     cursor: pointer;
   }
+  .item {
+    justify-content: center;
+}
 }
 </style>
